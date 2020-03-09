@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        /*
+            jQuery库中也内置了关于ajax请求的模块(使用了XMLHTTPRequest对象)
+            核心方法：
+                ajax()
+
+
+                支持：get 、get有参数、post、post有参数....
+                默认：GET请求
+        */
+
+        //get无参
+        // $.ajax("http://localhost:3001", {
+        //     success: function (data) {         //成功时的回调函数
+        //         console.log("成功：",data);
+        //     },
+        //     error: function (err) {                   //失败时的回调函数
+        //         console.log("失败：",err);
+        //     }
+        // });
+
+        //get有参数
+        // $.ajax("http://localhost:9005?username=admin&password=123", {
+        //     dataType:"json",                    //预期返回的数据类型  -->jQuery会自动解析数据类型
+        //     success: function (data) {         //成功时的回调函数
+        //         console.log("成功：",data);
+        //     },
+        //     error: function (err) {                   //失败时的回调函数
+        //         console.log("失败：",err);
+        //     }
+        // });
+
+        // $.ajax({
+        //     url:"http://localhost:9005?username=admin&password=123",    //配置路径
+        //     dataType: "json",                    //预期返回的数据类型  -->jQuery会自动解析数据类型
+        //     success: function (data) {         //成功时的回调函数
+        //         console.log("成功：", data);
+        //     },
+        //     error: function (err) {                   //失败时的回调函数
+        //         console.log("失败：", err);
+        //     }
+        // });
+
+        //get
+        // $.ajax({
+        //     url: "http://localhost:9005",    //配置路径
+        //     dataType: "json",                    //预期返回的数据类型  -->jQuery会自动解析数据类型
+        //     data: "username=admin&password=123",
+        //     success: function (data) {         //成功时的回调函数
+        //         console.log("成功：", data);
+        //     },
+        //     error: function (err) {                   //失败时的回调函数
+        //         console.log("失败：", err);
+        //     }
+        // });
+
+
+        //post
+        // $.ajax({
+        //     url:"http://localhost:3001",
+        //     method:"POST",                   //请求方式
+        //     success:function(data){
+        //         console.log(data)
+        //     },
+        //     error(err){
+        //         console.log(err);
+        //     }
+        // });
+
+        //post携带参数
+        $.ajax({
+            url: "http://localhost:5000",
+            method: "POST",                   //请求方式
+            dataType: "json",                //服务器返回的数据类型
+            // data:"username=admin&pwd=123",   //提交给服务器的数据
+            data: { username: 'admin', pwd: "123" },
+            success: function (data) {
+                console.log(data)
+            },
+            error(err) {
+                console.log(err);
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

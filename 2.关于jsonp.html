@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            jsonp技术与ajax技术无关(没有使用XMLHTTPRequest对象)
+            注意：使用jsonp是，一定要保证对方的服务器支持jsonp
+        */
+
+        //使用jsonp访问服务器
+        var JOSNP=document.createElement('script');
+        JOSNP.src="http://localhost:9000?callback=fn";
+        document.body.appendChild(JOSNP);
+
+        console.log('run');
+
+        function fn(data){
+            console.log(data);
+        }
+    </script>
+</body>
+</html>

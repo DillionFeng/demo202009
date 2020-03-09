@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            使用fetch也可以向后台服务器发起请求
+            fetch(url,[setting])
+            参数说明：  
+                url:服务器地址：
+                setting：配置信息  对象
+                    body:  发送给服务器数据
+
+            注意：fetch不是ajax技术(内部没有使用XMLHTTPRequest对象)
+        */
+
+        //使用fetch向后台发起请求
+        // fetch("http://localhost:3001")
+        //     .then(function (res) {             //处理服务器数据
+        //         // return res.json();           //将服务器数据按照json格式解析
+        //         // console.log(res);
+        //         return res.text();              //将后台数据按照文本格式解析
+        //     })
+        //     .then(function (data) {         //接受服务器数据
+        //         console.log(data);
+        //     });
+
+
+        //get携带参数
+        // fetch("http://localhost:9005?username=jack&password=123")
+        //     .then(function (response) {
+        //         // return response.text();//按照字符串格式解析
+        //         return response.json();//按照json对象解析
+        //     }).then(function (data) {
+        //         console.log(data);//打印接收到的服务器数据
+        //     });
+
+        //post请求   携带参数
+        // fetch("http://localhost:5000", {
+        //     method: "POST",          //请求格式
+        //     body: "username=admin&pwd=123"          //发送给服务器的数据
+        // }).then(function (response) {
+        //     return response.json();
+        // }).then(function (msg) {
+        //     console.log(msg);
+        // });
+
+
+        fetch("http://localhost:3001", {
+            method: "POST"          //请求格式            
+        }).then(function (response) {
+            return response.text();
+            // return response.json();
+        }).then(function (msg) {
+            console.log(msg);
+        });
+    </script>
+</body>
+
+</html>

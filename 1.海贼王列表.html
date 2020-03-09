@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
+</head>
+
+<body>
+
+    <button class="btn btn-info" tag="1">1-75</button>
+    <button class="btn btn-info" tag="2">76-150</button>
+    <button class="btn btn-info" tag="3">151-225</button>
+    <script>
+        var page = 1;//页码
+        var url = "http://cache.video.iqiyi.com/jp/avlist/202861101/" + page + "/?callback=fn";
+        $('button').click(function () {
+            //使用ajax技术发起请求
+            // ajax("GET",url,function(data){
+            //     //跨域问题
+            //     console.log(data);//发送错误：CORS policy: No 'Access-Control-Allow-Origin'
+            // });
+
+            // 使用jsonp技术发起请求
+            var JSONP = document.createElement('script');
+            //对page重新复制
+            page = $(this).attr('tag');
+            url = "http://cache.video.iqiyi.com/jp/avlist/202861101/" + page + "/?callback=fn";
+            JSONP.src = url;
+            $(JSONP).appendTo('body');
+
+            /*
+                如何解决跨域问题？
+                1）JSONP 注意：需要对方服务器支持jsonp
+                2）服务器允许跨域(CORS)
+            */
+        });
+
+        //jsonp的回调函数
+        function fn(data) {
+            console.log(data.data.vlist);
+            //遍历所有的剧集
+        }
+
+    </script>
+</body>
+
+</html>

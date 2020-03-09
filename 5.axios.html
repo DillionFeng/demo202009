@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            axios:能够完成前后端的数据交互（向后台request，接收response）
+            vue.js 官方推荐(指定)在vue中使用axios发起http请求
+
+
+            axios(settings)
+            参数说明：
+                settings：配置信息   对象
+                    method；请求方式
+                    url:     服务器地址
+                    data:    发送给服务器的数据
+
+            参考文档：
+            https://www.kancloud.cn/yunye/axios/234845
+            http://www.axios-js.com/docs/
+        */
+    </script>
+    <!-- 导入库 -->
+    <script src="js/axios.min.js"></script>
+    <script>
+        //get无参
+        // axios({
+        //     url:"http://localhost:3001"
+        // }).then(function (res) {  //将函数作为参数，接收服务器数据
+        //     console.log(res.data);//通过读取data属性，获取服务器返回的结果
+        // });
+
+        //get有参
+        // axios({
+        //     url:"http://localhost:9005?username=jack&password=123"
+        // }).then(function (res) {  //将函数作为参数，接收服务器数据
+        //     //返回值是一个对象，读取data属性获取结果
+        //     console.log(res.data);//通过读取data属性，获取服务器返回的结果
+        // });
+
+        //post有参
+        axios({
+            method: "POST",
+            url: "http://localhost:5000",
+            data:"username=admin&pwd=123"
+            // data: {
+            //     username: "admin",
+            //     pwd: "123"
+            // }
+        }).then(function (res) {
+            console.log(res.data);
+        });
+
+        //post无参
+        // axios({
+        //     method: "POST",
+        //     url: "http://localhost:3001"
+        // }).then(function (res) {
+        //     console.log(res.data);
+        // });
+    </script>
+</body>
+
+</html>
